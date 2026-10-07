@@ -29,9 +29,9 @@ let productos = JSON.parse(localStorage.getItem("productos")) || [
         nombre: "Corse",
         precio: 80,
         categoria: "ropa",
-        imagen: "imagenes/Corse.png",
+        imagen: "Imagenes/Corse.png",
         imagenes: [
-            "imagenes/Corse.png",
+            "Imagenes/Corse.png",
             
         ],
         descripcion: "Corse elegante ideal para eventos especiales y celebraciones",
