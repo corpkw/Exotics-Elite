@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exotics Elite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CONTENEDOR PRINCIPAL CON DISEÑO DE DOS COLUMNAS (TIENDA + CARRITO FIJO) -->
+    <div class="layout-principal">
+
+        <!-- CONTENIDO DE LA TIENDA -->
+        <div class="contenido-tienda">
+            <!-- HEADER -->
+            <header>
+                <h1>EXOTICS ELITE</h1>
+                <p class="subtitulo">Moda • Cuidado Personal • Accesorios • Mascotas</p>
+
+                <!-- CARRUSEL -->
+                <div class="slider">
+                    <div class="slide active">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/ropa.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/Rubor.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/peces.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- BUSCADOR -->
+                <div class="buscador">
+                    <input type="text" id="buscar" placeholder="🔍 Buscar producto...">
+                    <div class="carrito-movil-btn" onclick="abrirCarritoMovil()">
+                        🛒 <span id="contadorMovil">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CATEGORÍAS -->
+            <section class="categorias">
+                <div class="categoria-card active" onclick="filtrarCategoria('todos', this)">
+                    <span>Todo</span>
+                </div>
+                <div class="categoria-card" onclick="filtrarCategoria('ropa', this)">
+                    <span>Ropa</span>
+                </div>
+                <div class="categoria-card" onclick="filtrarCategoria('Cuidado Personal', this)">
+                    <span>Cuidado Personal</span>
+                </div>
+                <div class="categoria-card" onclick="filtrarCategoria('Accesorios', this)">
+                    <span>Accesorios</span>
+                </div>
+                <div class="categoria-card" onclick="filtrarCategoria('Mascotas', this)">
+                    <span>Mascotas</span>
+                </div>
+            </section>
+
+            <!-- PRODUCTOS -->
+            <main>
+                <div id="productos" class="productos"></div>
+            </main>
+        </div>
+
+        <!-- CARRITO LATERAL FIJO AL COSTADO -->
+        <aside class="carrito-lateral-fijo" id="panelCarritoFijo">
+            <div class="carrito-header-fijo">
+                <h2>🛒 Tu Carrito</h2>
+                <span id="contador" class="badge-contador">0</span>
+            </div>
+            <div id="listaCarrito" class="lista-carrito-fija"></div>
+            <div class="carrito-footer-fijo">
+                <h3 id="totalCarrito">Total: S/0.00</h3>
+                <button class="btn whatsapp-btn" onclick="enviarPedidoWhatsapp()">📱 Enviar pedido por WhatsApp</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- MODAL PRODUCTO -->
+    <div id="modalProducto" class="modal">
+        <div class="modal-content">
+            <button class="cerrar" onclick="cerrarModal()">✖</button>
+            <img id="modalImg" src="" alt="Producto">
+            <!-- Galería de miniaturas para varios modelos -->
+            <div id="modalGaleria" class="galeria-miniaturas"></div>
+            <div class="modal-info">
+                <div id="modalColores"></div>
+                <div id="modalStock" class="stock-modal"></div>
+                <h2 id="modalNombre"></h2>
+                <p id="modalDescripcion"></p>
+                <div id="modalPrecio"></div>
+                <button class="btn" id="btnComprarModal">🛒 Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN ADMIN -->
+    <div id="loginAdmin">
+        <h2>Administrador</h2>
+        <input type="password" id="claveAdmin" placeholder="Contraseña">
+        <button class="btn" onclick="validarAdmin()">Ingresar</button>
+    </div>
+
+    <!-- PANEL ADMIN -->
+    <section id="panelAdmin">
+        <h2>⚙️ Panel Administrador</h2>
+        <div class="admin-grid">
+            <input id="nombre" placeholder="Nombre producto">
+            <input id="precio" type="number" step="0.01" placeholder="Precio">
+            <input id="stock" type="number" placeholder="Cantidad disponible (Stock)">
+            <input id="imagen" placeholder="URL imagen principal">
+            <input id="imagenesExtras" placeholder="URLs fotos extras (separadas por comas)">
+            <input id="coloresAdmin" placeholder="Colores (ej: Rosado, Negro, Blanco)">
+            <select id="categoria">
+                <option value="ropa">Ropa</option>
+                <option value="cuidado_personal">Cuidado Personal</option>
+                <option value="accesorio">Accesorios</option>
+                <option value="belleza">Belleza</option>
+                <option value="mascotas">Mascotas</option>
+            </select>
+            <button class="btn" onclick="agregarProducto()">➕ Agregar Producto</button>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <h3 style="font-size: 15px; margin-bottom: 10px;">📦 Lista para eliminar productos</h3>
+            <div id="listaAdminProductos" style="max-height: 180px; overflow-y: auto;"></div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/51934727549" target="_blank" rel="noopener noreferrer" class="whatsapp">
+        <span class="wa-icon">💬</span>
+        <span>WhatsApp</span>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Exotics Elite
+        <span class="admin-icon" onclick="mostrarAdmin()">⚙️</span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
